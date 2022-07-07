@@ -1,4 +1,10 @@
 # twearch
+## Requirements
+- Install `tweepy`:
+  ```
+  `$ pip install tweepy`
+  ```
+
 ## Usage
 - Create `src/private_info.py` as preparation:
   ```python
