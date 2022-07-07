@@ -2,7 +2,7 @@
 ## Requirements
 - Install `tweepy`:
   ```
-  `$ pip install tweepy`
+  $ pip install tweepy
   ```
 
 ## Usage
