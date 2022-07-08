@@ -1,3 +1,4 @@
+import json
 from args import *
 from private_info import *
 from libs import *
@@ -10,6 +11,7 @@ def main():
     """
     print(GetUser(TwitterMyAccountInfo.user_id))
     print(GetUser_Following(TwitterMyAccountInfo.user_id))
+    FollowingUserList = GetUser_Following(TwitterMyAccountInfo.user_id)
 
 
 if __name__ == '__main__' :

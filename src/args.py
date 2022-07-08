@@ -27,7 +27,7 @@ def print_current_args(args):
         - args (Namespace)
     - Returns:
     """
-    print_info("date_time           : {}".format(args.date_time))
+    print_info("date_time : {}".format(args.date_time))
 
 
 def main():
