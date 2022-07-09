@@ -130,3 +130,4 @@ dmypy.json
 
 # user original
 src/private_info.py
+data
