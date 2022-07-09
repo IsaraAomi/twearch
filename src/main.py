@@ -11,9 +11,8 @@ def main():
     FollowingUsersList = GetUser_Following(TwitterMyAccountInfo.user_id)
     FollowingUsersTweetsList = GetFollowingUsersTweets(FollowingUsersList, end_time="2022-06-15T00:00:00Z", start_time="2022-06-10T00:00:00Z", process="multi")
     SearchedTweetsList = SearchTweetsInTweetsList(FollowingUsersTweetsList, word="あなたのサークル")
-    print(len(SearchedTweetsList))
-    for SearchedTweet in SearchedTweetsList:
-        print(SearchedTweet)
+    for i, SearchedTweet in enumerate(SearchedTweetsList):
+        print(i, SearchedTweet)
     SaveTweetsListAsCsv(SearchedTweetsList)
 
 
