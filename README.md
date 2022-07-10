@@ -1,4 +1,8 @@
 # twearch
+## Description
+- This program allows you to search for any string of tweets from users you follow, specifying a date interval.
+- The results can be retrieved as a list in the form of a csv file.
+
 ## Requirements
 - Python version: `3.8.12`
 - Install `tweepy`:
