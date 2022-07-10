@@ -27,3 +27,6 @@
   $ python main.py
   ```
 - The results are output in `data` directory.
+  - Recommend install the following extensions when viewing csv files on VSCode.
+    - [Edit csv](https://marketplace.visualstudio.com/items?itemName=janisdd.vscode-edit-csv)
+    - [Rainbow CSV](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv)
