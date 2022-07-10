@@ -1,21 +1,29 @@
 # twearch
 ## Requirements
+- Python version: `3.8.12`
 - Install `tweepy`:
   ```
   $ pip install tweepy
   ```
 
 ## Usage
-- Create `src/private_info.py` as preparation:
-  ```python
-  class TwitterApiInfo:
-      bearer_token        = "YOUR_BEARER_TOKEN"
-      consumer_key        = "YOUR_API_KEY"
-      consumer_secret     = "YOUR_API_SECRET"
-      access_token        = "YOUR_ACCESS_TOKEN"
-      access_token_secret = "YOUR_ACCESS_TOKEN_SECRET"
-  class TwitterMyAccountInfo:
-      user_id  = 1234567890
-      username = "YOUR_USER_NAME"
-      name     = "YOUR_NAME"
+- Copy `src/private_info_dummy.py` to `src/private_info.py`.
   ```
+  $ cd src
+  $ cp private_info_dummy.py private_info.py
+  ```
+- Edit `src/private_info.py` according to your API and token information.
+  - How to get your API and token information:
+    - [【Twitter】APIキー利用申請から発行までの手順解説｜ツイッター運用自動化アプリ作成に向けた環境構築](https://di-acc2.com/system/rpa/9688/)
+- Edit the setting section in `src/main.py`:
+  ```python
+  SEARCH_END_TIME   = "2022-06-15T00:00:00Z"  # UTC
+  SEARCH_START_TIME = "2022-06-10T00:00:00Z"  # UTC
+  SEARCH_WORD       = "あなたのサークル"
+  ```
+- Run python script:
+  ```
+  $ cd src
+  $ python main.py
+  ```
+- The results are output in `data` directory.
