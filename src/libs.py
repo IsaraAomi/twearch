@@ -33,7 +33,7 @@ def SearchTweets(search, tweet_max):
     - Returns:
         - (list(dict))
     """
-    tweets = ClientInfo().search_recent_tweets(query = search, max_results = tweet_max)
+    tweets = ClientInfo().search_recent_tweets(query=search, max_results=tweet_max)
     results = []
     tweets_data = tweets.data
     if tweets_data != None:
@@ -182,8 +182,9 @@ def SaveTweetsListAsCsv(TweetsList):
         - TweetsList (list(dict))
     - Returns:
     """
-    with open('../data/list.csv', 'w') as f:
-        writer = csv.writer(f)
+    args = get_args()
+    with open('../data/list_'+args.date_time+'.csv', 'w') as f:
+        writer = csv.writer(f, quoting=csv.QUOTE_ALL)
         for Tweet in TweetsList:
             TweetLine = [Tweet["name"], Tweet["username"], Tweet["text"].replace('\n', '')]
             writer.writerow(TweetLine)
