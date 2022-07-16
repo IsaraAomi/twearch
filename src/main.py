@@ -6,9 +6,11 @@ from libs import *
 """
 Setting
 """
-SEARCH_END_TIME   = "2022-06-15T00:00:00Z"  # UTC
-SEARCH_START_TIME = "2022-06-10T00:00:00Z"  # UTC
-SEARCH_WORD       = "あなたのサークル"
+SEARCH_END_TIME    = "2022-06-15T00:00:00Z"  # UTC
+SEARCH_START_TIME  = "2022-06-10T00:00:00Z"  # UTC
+SEARCH_WORD_CIRCLE = "あなたのサークル"
+SEARCH_WORD_SAT    = "土曜日"
+SEARCH_WORD_SUN    = "日曜日"
 
 
 def main():
@@ -18,10 +20,10 @@ def main():
     """
     FollowingUsersList = GetUser_Following(TwitterMyAccountInfo.user_id)
     FollowingUsersTweetsList = GetFollowingUsersTweets(FollowingUsersList, end_time=SEARCH_END_TIME, start_time=SEARCH_START_TIME, process="multi")
-    SearchedTweetsList = SearchTweetsInTweetsList(FollowingUsersTweetsList, word=SEARCH_WORD)
-    for i, SearchedTweet in enumerate(SearchedTweetsList):
-        print_info("{} {}".format(i, SearchedTweet))
-    SaveTweetsListAsCsv(SearchedTweetsList)
+    TweetsList_sat = SearchTweetsInTweetsList(FollowingUsersTweetsList, word_0=SEARCH_WORD_CIRCLE, word_1=SEARCH_WORD_SAT)
+    TweetsList_sun = SearchTweetsInTweetsList(FollowingUsersTweetsList, word_0=SEARCH_WORD_CIRCLE, word_1=SEARCH_WORD_SUN)
+    SaveTweetsListAsCsv(TweetsList_sat, prefix="sat")
+    SaveTweetsListAsCsv(TweetsList_sun, prefix="sun")
 
 
 if __name__ == '__main__' :

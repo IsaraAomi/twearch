@@ -47,17 +47,18 @@ def SearchTweets(search, tweet_max):
     return results
 
 
-def SearchTweetsInTweetsList(TweetsList, word):
+def SearchTweetsInTweetsList(TweetsList, word_0, word_1):
     """
     - Args:
         - TweetsList (list(dict))
-        - word (str)
+        - word_0 (str)
+        - word_1 (str)
     - Returns:
         - results (list(dict))
     """
     results = []
     for Tweet in TweetsList:
-        if word in Tweet["text"]:
+        if ((word_0 in Tweet["text"]) and (word_1 in Tweet["text"])):
             results.append(Tweet)
     return results
 
@@ -176,14 +177,15 @@ def GetFollowingUsersTweets(FollowingUsersList, end_time, start_time, max_result
     return results
 
 
-def SaveTweetsListAsCsv(TweetsList):
+def SaveTweetsListAsCsv(TweetsList, prefix):
     """
     - Args:
         - TweetsList (list(dict))
+        - prefix (str)
     - Returns:
     """
     args = get_args()
-    with open('../data/list_'+args.date_time+'.csv', 'w') as f:
+    with open('../data/'+prefix+'_list_'+args.date_time+'.csv', 'w') as f:
         writer = csv.writer(f, quoting=csv.QUOTE_ALL)
         for Tweet in TweetsList:
             TweetLine = [Tweet["name"], Tweet["username"], Tweet["text"].replace('\n', '')]
