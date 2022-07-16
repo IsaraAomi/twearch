@@ -24,6 +24,8 @@
   SEARCH_END_TIME   = "2022-06-15T00:00:00Z"  # UTC
   SEARCH_START_TIME = "2022-06-10T00:00:00Z"  # UTC
   SEARCH_WORD       = "あなたのサークル"
+  SEARCH_WORD_SAT   = "土曜日"
+  SEARCH_WORD_SUN   = "日曜日"
   ```
 - Run python script:
   ```
