@@ -98,7 +98,7 @@ def GetUsersTweets(user_id, end_time, start_time, max_results=100):
             # obj["tweet_id"] = tweet.id
             # obj["user_id"]  = tweets.includes["users"][0].id
             obj["name"] = tweets.includes["users"][0].name
-            obj["username"] = tweets.includes["users"][0].username
+            obj["userurl"] = "https://twitter.com/" + tweets.includes["users"][0].username
             obj["text"] = tweet.text
             results.append(obj)
     else:
@@ -185,10 +185,14 @@ def SaveTweetsListAsCsv(TweetsList, prefix):
     - Returns:
     """
     args = get_args()
-    with open('../data/'+prefix+'_list_'+args.date_time+'.csv', 'w') as f:
+    save_dir = os.path.join("..", "data")
+    save_filename = prefix+"_list_"+args.date_time+".csv"
+    if not os.path.exists(save_dir):
+        os.makedirs(save_dir)
+    with open(os.path.join(save_dir, save_filename), 'w') as f:
         writer = csv.writer(f, quoting=csv.QUOTE_ALL)
         for Tweet in TweetsList:
-            TweetLine = [Tweet["name"], Tweet["username"], Tweet["text"].replace('\n', '')]
+            TweetLine = [Tweet["name"], Tweet["userurl"], Tweet["text"].replace('\n', '')]
             writer.writerow(TweetLine)
 
 
