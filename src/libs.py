@@ -125,7 +125,7 @@ def GetUsersAllTweets(user_id, end_time, start_time, max_results=100, next_token
     trial_id = 0
     while True:
         print(f"trial_id = {trial_id}")
-        tweets = Client().get_users_tweets(id=user_id, end_time=end_time, expansions=["author_id"], start_time=start_time, max_results=max_results, user_fields=["name", "username"], pagination_token=next_token)
+        tweets = Client().get_users_tweets(id=user_id, end_time=end_time, exclude=["retweets", "replies"], expansions=["author_id"], start_time=start_time, max_results=max_results, user_fields=["name", "username"], pagination_token=next_token)
         # pprint.pprint(tweets)
         if (tweets.data != None):
             for tweet in tweets.data:
@@ -225,6 +225,7 @@ def SaveTweetsListAsCsv(TweetsList, prefix=None):
         - TweetsList (list(dict))
         - prefix (str)
     - Returns:
+        - file_path (str)
     """
     args = get_args()
     save_dir = os.path.join("..", "data")
@@ -234,11 +235,13 @@ def SaveTweetsListAsCsv(TweetsList, prefix=None):
         save_filename = "list_"+args.date_time+".csv"
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
-    with open(os.path.join(save_dir, save_filename), 'w') as f:
+    file_path = os.path.join(save_dir, save_filename)
+    with open(file_path, 'w') as f:
         writer = csv.writer(f, quoting=csv.QUOTE_ALL)
         for Tweet in TweetsList:
             TweetLine = [Tweet["name"], Tweet["userurl"], Tweet["text"].replace('\n', '')]
             writer.writerow(TweetLine)
+    return file_path
 
 
 def main():
