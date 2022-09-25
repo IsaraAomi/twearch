@@ -6,7 +6,7 @@ from word_cloud import *
 """
 Setting
 """
-SEARCH_END_TIME    = "2022-09-23T00:00:00Z"  # UTC
+SEARCH_END_TIME    = "2022-09-25T00:00:00Z"  # UTC
 SEARCH_START_TIME  = "2022-01-01T00:00:00Z"  # UTC
 
 def main():
