@@ -1,7 +1,7 @@
+import numpy as np
 import csv
 import pprint
 import MeCab
-import numpy as np
 from PIL import Image
 from wordcloud import WordCloud
 
@@ -16,9 +16,8 @@ def read_text_from_csv_to_list(file_path):
     with open(file_path, "r") as f:
         reader = csv.reader(f)
         list = [row[2] for row in reader]  # row[2] is text data
-    # pprint.pprint(list_2d)
+    # pprint.pprint(list)
     return list
-
 
 
 def create_word_cloud_from_csv(file_path):
